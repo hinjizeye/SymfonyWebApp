@@ -1,0 +1,34 @@
+{% extends 'Homebase.html.twig' %}
+
+{% block title %}Dont Be Silent. Report!{% endblock %}
+
+{% block body %}
+<body class="is-preload">
+<div id="wrapper">
+    <div id="background"></div>
+    <div id="main">
+
+        <!-- Header -->
+        <header id="header">
+            <h1 style="margin-bottom: 20px"><img src="assets/css/images/victimslogo.png"/></h1>
+            <p style="font-size: xx-large">Physical Abuse &nbsp;&bull;&nbsp; Sexual Abuse &nbsp;&bull;&nbsp; Mental/Psychological</p>
+            <nav>
+                <ul>
+                    <li><button type="button" class="btn btn-dark"><a href="{{ path('app_register') }}" style="text-decoration: none">Sign In</a> </button></li>
+                    <li><button type="button" class="btn btn-dark"><a href="{{ path('app_login') }}" style="text-decoration: none">Log In</a> </button></li>
+
+                </ul>
+            </nav>
+        </header>
+        <!-- Footer -->
+        <footer id="">
+            <span class="copyright">&copy; zambianvictims</span>
+        </footer>
+    </div>
+</div>
+<script>
+    window.onload = function() { document.body.classList.remove('is-preload'); }
+    window.ontouchmove = function() { return false; }
+    window.onorientationchange = function() { document.body.scrollTop = 0; }
+</script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'Gallerybase.html.twig' %}
+
+{% block title %}FileDocuments{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Title</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="card-body">
+    <h1>FileDocuments</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ file_document.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ file_document.title }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ file_document.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('file_documents_index') }}">back to list</a>
+
+    <a href="{{ path('file_documents_edit', {'id': file_document.id}) }}">edit</a>
+
+    {{ include('admin/file_documents/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

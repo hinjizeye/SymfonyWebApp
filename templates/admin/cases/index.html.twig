@@ -1,0 +1,80 @@
+{% extends 'Adminbase.html.twig' %}
+
+{% block title %}Cases index{% endblock %}
+
+{% block body %}
+
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openwin(windowURL, windowName, windowFeatures) {
+            window.open(windowURL,windowName,windowFeatures);
+        }
+    </SCRIPT>
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Title</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="card-body">
+    <h1>Cases index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>City</th>
+                <th>WhatHappened</th>
+                <th>WhenItHappened</th>
+                <th>File</th>
+                <th>EvidenceGallery</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for case in cases %}
+            <tr>
+                <td>{{ case.id }}</td>
+                <td>{{ case.Name }}</td>
+                <td>{{ case.Surname }}</td>
+                <td>{{ case.age }}</td>
+                <td>{{ case.city }}</td>
+                <td>{{ case.WhatHappened }}</td>
+                <td>{{ case.WhenItHappened }}</td>
+                <td><img src="{{ asset('Documents/' ~case.File ) }}" height="40"/> </td>
+                <td>
+                    <a href="javascript:openwin('{{ path('file_documents_new', {'id':case.id}) }}', '','toolbar=no,location=no, directories=no,status=no,top=50,left=100,menuBar=no, scrollBars=yes,resizable=no, width=900,height=700');">
+                        <img src="{{ asset('props') }}/gallery.jpg" height="40">
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('cases_show', {'id': case.id}) }}">show</a>
+                    <a href="{{ path('cases_edit', {'id': case.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cases_new') }}">Create new</a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
